@@ -168,7 +168,7 @@ export function generateStructuredData(type: 'Organization' | 'WebSite' | 'Artic
       datePublished: data.publishedAt,
       author: {
         '@type': 'Person',
-        name: data.author.name
+        name: (data.author as { name: string })?.name || 'Limitless Infotech'
       },
       publisher: {
         '@type': 'Organization',

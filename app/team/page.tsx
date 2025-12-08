@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { FaLinkedin, FaTwitter, FaGithub, FaEnvelope, FaStar, FaAward, FaRocket } from 'react-icons/fa'
 
 export const metadata: Metadata = {

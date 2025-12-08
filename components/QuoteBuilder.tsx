@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { FaPlus, FaMinus, FaDownload, FaEnvelope } from 'react-icons/fa'
+import { FaMinus, FaTrash, FaCalculator, FaEnvelope, FaDownload } from 'react-icons/fa'
 
 interface QuoteItem {
   id: string

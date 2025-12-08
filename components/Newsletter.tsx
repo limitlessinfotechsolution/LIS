@@ -29,7 +29,7 @@ export default function Newsletter() {
         setStatus('error')
         setMessage(data.error)
       }
-    } catch (err) {
+    } catch {
       setStatus('error')
       setMessage('Failed to subscribe. Please try again.')
     }

@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
     const { type, data, sessionId } = await request.json()
     
     // Store analytics data
-    // await db.analytics.create({ type, data, sessionId, timestamp: new Date() })
+    // await db.analytics.create({ type, data, _sessionId, timestamp: new Date() })
     
     // Track in monitoring system
     if (type === 'event') {

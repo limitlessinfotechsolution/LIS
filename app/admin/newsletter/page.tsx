@@ -20,7 +20,7 @@ export default function NewsletterManagementPage() {
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<'all' | 'active' | 'unsubscribed'>('all')
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedSubscribers, setSelectedSubscribers] = useState<string[]>([])
+  const [_selectedSubscribers, _setSelectedSubscribers] = useState<string[]>([])
 
   useEffect(() => {
     // Check authentication

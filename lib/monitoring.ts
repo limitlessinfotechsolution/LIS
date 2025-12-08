@@ -31,14 +31,22 @@ class MonitoringService {
     if (!dsn) return
     
     try {
-      const Sentry = await import('@sentry/nextjs').catch(() => null)
-      if (!Sentry) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const Sentry = await import('@sentry/nextjs' as any).catch(() => null) as { 
+        init?: (options: { 
+          dsn: string; 
+          tracesSampleRate: number; 
+          environment: string;
+          beforeSend?: (event: Record<string, unknown>) => Record<string, unknown> | null
+        }) => void 
+      } | null
+      if (!Sentry || !Sentry.init) {
         console.warn('⚠️ Sentry package not installed')
         return
       }
       Sentry.init({
         dsn,
-        environment: process.env.NODE_ENV,
+        environment: process.env.NODE_ENV || 'development',
         tracesSampleRate: 1.0,
         beforeSend(event: Record<string, unknown>) {
           // Filter sensitive data
@@ -53,7 +61,7 @@ class MonitoringService {
       })
       this.sentryEnabled = true
       console.log('✅ Sentry monitoring initialized')
-    } catch (error) {
+    } catch {
       console.warn('⚠️ Sentry not available')
     }
   }
@@ -110,8 +118,9 @@ class MonitoringService {
     
     if (this.sentryEnabled) {
       try {
-        const Sentry = await import('@sentry/nextjs').catch(() => null)
-        if (Sentry) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const Sentry = await import('@sentry/nextjs' as any).catch(() => null) as { captureException?: (error: Error, options?: { extra?: Record<string, unknown> }) => void } | null
+        if (Sentry && Sentry.captureException) {
           Sentry.captureException(error, { extra: context })
         }
       } catch (e) {

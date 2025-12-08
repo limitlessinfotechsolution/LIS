@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import Link from 'next/link'
-import { FaBlog, FaCalendar, FaClock, FaUser, FaTag, FaSearch } from 'react-icons/fa'
+import { FaBlog, FaCalendar, FaClock, FaTag, FaSearch } from 'react-icons/fa'
 import { getBlogPosts, getBlogCategories } from '../../lib/blog'
 
 export default function Blog() {

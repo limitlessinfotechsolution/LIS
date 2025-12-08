@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import { FaCalendar, FaClock, FaUser, FaTag, FaArrowLeft, FaShare, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa'
+import { FaCalendar, FaClock, FaTag, FaArrowLeft, FaArrowRight, FaShare, FaFacebook, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import { getBlogPost, getRelatedPosts } from '../../../lib/blog'
 
 export default function BlogPost() {

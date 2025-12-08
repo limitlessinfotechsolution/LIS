@@ -129,7 +129,7 @@ export async function GET(request: NextRequest) {
         topPosts: topPosts.rows.map((row: { title: string; slug: string; views: string }) => ({
           title: row.title,
           slug: row.slug,
-          views: parseInt(row.views || 0)
+          views: parseInt(String(row.views || '0'))
         }))
       },
       traffic: trafficData

@@ -15,7 +15,7 @@ export default function TwoFactorSetup() {
   const [method, setMethod] = useState<string>('')
   const [code, setCode] = useState('')
   const [backupCodes, setBackupCodes] = useState<string[]>([])
-  const [qrCode, setQrCode] = useState('')
+  const [_qrCode, setQrCode] = useState('')
 
   const methods: TwoFactorMethod[] = [
     {

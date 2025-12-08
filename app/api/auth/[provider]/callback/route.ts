@@ -29,7 +29,7 @@ export async function GET(
     )
     
     // Get user info
-    const user = await getUserInfo(provider, accessToken)
+    const _user = await getUserInfo(provider, accessToken)
     
     // Create or update user in database
     // await db.users.upsert({ where: { email: user.email }, data: user })

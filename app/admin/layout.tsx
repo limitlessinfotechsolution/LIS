@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  FaHome, FaEnvelope, FaBlog, FaCog, FaUsers, FaChartLine,
+  FaHome, FaEnvelope, FaBlog, FaUsers, FaChartLine,
   FaInbox, FaServer, FaSignOutAlt, FaBell, FaChevronLeft, FaChevronRight
 } from 'react-icons/fa'
 
@@ -89,9 +89,6 @@ export default function AdminLayout({
   if (pathname === '/admin') {
     return <>{children}</>
   }
-
-  const sidebarWidth = isCollapsed ? 'w-20' : 'w-72'
-  const mainMargin = isCollapsed ? 'ml-20' : 'ml-72'
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">

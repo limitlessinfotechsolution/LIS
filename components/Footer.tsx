@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { FaLinkedin, FaTwitter, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt, FaSun, FaMoon, FaGlobe, FaCheck } from 'react-icons/fa'
 
 export default function Footer() {
@@ -72,7 +73,7 @@ export default function Footer() {
             className="lg:col-span-2"
           >
             <div className="flex items-center gap-3 mb-4">
-              <img src="/LIS-LOGO.png" alt="Limitless Infotech" className="h-12 w-auto" />
+              <Image src="/LIS-LOGO.png" alt="Limitless Infotech" width={48} height={48} className="h-12 w-auto" />
               <div>
                 <h3 className="font-bold text-xl bg-gradient-to-r from-[#2A52BE] to-[#F97316] bg-clip-text text-transparent">
                   Limitless Infotech

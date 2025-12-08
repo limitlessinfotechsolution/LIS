@@ -28,15 +28,16 @@ class CacheService {
 
     try {
       // Dynamic import - redis is optional
-      const redis = await import('redis').catch(() => null)
-      if (!redis) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const redis = await import('redis' as any).catch(() => null) as { createClient?: (options: { url: string }) => RedisClient } | null
+      if (!redis || !redis.createClient) {
         console.warn('⚠️ Redis package not installed, using memory cache')
         return
       }
-      this.redisClient = redis.createClient({ url: redisUrl }) as RedisClient
+      this.redisClient = redis.createClient({ url: redisUrl })
       await this.redisClient.connect()
       console.log('✅ Redis cache connected')
-    } catch (error) {
+    } catch {
       console.warn('⚠️ Redis not available, using memory cache')
     }
   }
@@ -50,8 +51,8 @@ class CacheService {
       try {
         const value = await this.redisClient.get(key)
         return value ? JSON.parse(value) : null
-      } catch (error) {
-        console.error('Redis get error:', error)
+      } catch (err) {
+        console.error('Redis get error:', err)
       }
     }
 
@@ -64,7 +65,7 @@ class CacheService {
       return null
     }
 
-    return entry.value
+    return entry.value as T
   }
 
   /**
@@ -76,8 +77,8 @@ class CacheService {
       try {
         await this.redisClient.setEx(key, ttl, JSON.stringify(value))
         return
-      } catch (error) {
-        console.error('Redis set error:', error)
+      } catch (err) {
+        console.error('Redis set error:', err)
       }
     }
 
@@ -96,8 +97,8 @@ class CacheService {
       try {
         await this.redisClient.del(key)
         return
-      } catch (error) {
-        console.error('Redis delete error:', error)
+      } catch (err) {
+        console.error('Redis delete error:', err)
       }
     }
 
@@ -112,8 +113,8 @@ class CacheService {
       try {
         await this.redisClient.flushAll()
         return
-      } catch (error) {
-        console.error('Redis clear error:', error)
+      } catch (err) {
+        console.error('Redis clear error:', err)
       }
     }
 

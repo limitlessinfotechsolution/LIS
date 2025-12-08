@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   
+  // Output configuration
+  output: 'standalone',
+  
   // Performance optimizations
   compress: true,
   

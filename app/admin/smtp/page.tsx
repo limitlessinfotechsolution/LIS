@@ -45,8 +45,8 @@ export default function SMTPConfigPage() {
       if (data) {
         setConfig(data)
       }
-    } catch (error) {
-      console.error('Failed to fetch SMTP config:', error)
+    } catch (err) {
+      console.error('Failed to fetch SMTP config:', err)
     }
   }
 
@@ -67,7 +67,7 @@ export default function SMTPConfigPage() {
       } else {
         alert('Failed to save SMTP configuration')
       }
-    } catch (error) {
+    } catch {
       alert('An error occurred while saving')
     } finally {
       setLoading(false)
@@ -96,7 +96,7 @@ export default function SMTPConfigPage() {
       } else {
         alert('Failed to send test email')
       }
-    } catch (error) {
+    } catch {
       alert('An error occurred while testing')
     } finally {
       setTesting(false)

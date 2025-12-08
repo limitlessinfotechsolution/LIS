@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { checkRateLimit, RATE_LIMITS } from '@/lib/rateLimit'
+import { checkRateLimit } from '@/lib/rateLimit'
 import monitoring from '@/lib/monitoring'
 
 export async function POST(request: NextRequest) {

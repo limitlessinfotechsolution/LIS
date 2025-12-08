@@ -31,17 +31,17 @@ export function generateSchema(type: string, data: Record<string, unknown>): str
       description: data.description,
       address: data.address && {
         '@type': 'PostalAddress',
-        streetAddress: data.address.street,
-        addressLocality: data.address.city,
-        addressRegion: data.address.state,
-        postalCode: data.address.zip,
-        addressCountry: data.address.country
+        streetAddress: (data.address as { street: string }).street,
+        addressLocality: (data.address as { city: string }).city,
+        addressRegion: (data.address as { state: string }).state,
+        postalCode: (data.address as { zip: string }).zip,
+        addressCountry: (data.address as { country: string }).country
       },
       contactPoint: data.contact && {
         '@type': 'ContactPoint',
-        telephone: data.contact.phone,
+        telephone: (data.contact as { phone: string }).phone,
         contactType: 'customer service',
-        email: data.contact.email
+        email: (data.contact as { email: string }).email
       },
       sameAs: data.socialLinks || []
     },
@@ -128,16 +128,16 @@ export function generateSchema(type: string, data: Record<string, unknown>): str
       telephone: data.phone,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: data.address.street,
-        addressLocality: data.address.city,
-        addressRegion: data.address.state,
-        postalCode: data.address.zip,
-        addressCountry: data.address.country
+        streetAddress: (data.address as { street: string })?.street,
+        addressLocality: (data.address as { city: string })?.city,
+        addressRegion: (data.address as { state: string })?.state,
+        postalCode: (data.address as { zip: string })?.zip,
+        addressCountry: (data.address as { country: string })?.country
       },
       geo: data.geo && {
         '@type': 'GeoCoordinates',
-        latitude: data.geo.lat,
-        longitude: data.geo.lng
+        latitude: (data.geo as { lat: number }).lat,
+        longitude: (data.geo as { lng: number }).lng
       },
       openingHoursSpecification: data.hours
     }

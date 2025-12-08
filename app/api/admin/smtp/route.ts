@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
       ...config,
       password: password ? '••••••••' : ''
     })
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to fetch SMTP config' },
       { status: 500 }
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'SMTP configuration saved successfully'
     })
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to save SMTP config' },
       { status: 500 }

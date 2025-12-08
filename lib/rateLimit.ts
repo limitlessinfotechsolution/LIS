@@ -28,15 +28,18 @@ export async function initRedis(redisUrl?: string) {
   
   try {
     // Dynamic import - redis is optional
-    const redis = await import('redis').catch(() => null)
-    if (!redis) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const redis = await import('redis' as any).catch(() => null) as { createClient?: (options: { url: string }) => typeof redisClient } | null
+    if (!redis || !redis.createClient) {
       console.warn('⚠️ Redis package not installed, using in-memory rate limiting')
       return
     }
-    redisClient = redis.createClient({ url: redisUrl }) as typeof redisClient
-    await redisClient!.connect()
+    redisClient = redis.createClient({ url: redisUrl })
+    if (redisClient) {
+      await redisClient.connect()
+    }
     console.log('✅ Redis connected for rate limiting')
-  } catch (error) {
+  } catch {
     console.warn('⚠️ Redis not available, using in-memory rate limiting')
   }
 }
@@ -49,8 +52,8 @@ async function getRecord(key: string): Promise<RateLimitRecord | null> {
     try {
       const data = await redisClient.get(key)
       return data ? JSON.parse(data) : null
-    } catch (error) {
-      console.error('Redis get error:', error)
+    } catch (err) {
+      console.error('Redis get error:', err)
     }
   }
   return memoryStore.get(key) || null
@@ -64,8 +67,8 @@ async function setRecord(key: string, record: RateLimitRecord, ttl: number) {
     try {
       await redisClient.setEx(key, Math.ceil(ttl / 1000), JSON.stringify(record))
       return
-    } catch (error) {
-      console.error('Redis set error:', error)
+    } catch (err) {
+      console.error('Redis set error:', err)
     }
   }
   memoryStore.set(key, record)

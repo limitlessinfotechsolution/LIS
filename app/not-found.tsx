@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { FaHome, FaSearch, FaArrowLeft } from 'react-icons/fa'
+import { FaHome, FaSearch } from 'react-icons/fa'
 
 export default function NotFound() {
   return (

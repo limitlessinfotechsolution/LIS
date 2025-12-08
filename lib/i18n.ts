@@ -32,7 +32,7 @@ class I18nService {
       // In production, load from files or API
       const translations = await import(`../locales/${locale}.json`)
       this.translations.set(locale, translations.default)
-    } catch (error) {
+    } catch {
       console.warn(`Failed to load translations for ${locale}`)
       
       // Load fallback

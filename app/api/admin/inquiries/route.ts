@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { verifyToken } from '../../../../lib/auth'
 
 // Mock data - Replace with database in production
-let inquiries = [
+const inquiries = [
   {
     id: '1',
     name: 'John Doe',
@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(inquiries)
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to fetch inquiries' },
       { status: 500 }
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
       success: true,
       inquiry: newInquiry
     })
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to create inquiry' },
       { status: 500 }

@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // List webhooks for authenticated user
     // const webhooks = await db.webhooks.find({ userId: user.id })
@@ -69,7 +69,7 @@ export async function GET(request: NextRequest) {
         }
       ]
     })
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to fetch webhooks' },
       { status: 500 }

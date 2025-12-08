@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { FaBell, FaEnvelope, FaMobile, FaDesktop } from 'react-icons/fa'
+import { FaCheck, FaTimes, FaEnvelope, FaBell, FaMobile, FaDesktop } from 'react-icons/fa'
 import { requestNotificationPermission, subscribeToPush } from '@/lib/pushNotifications'
 
 interface NotificationPreferences {

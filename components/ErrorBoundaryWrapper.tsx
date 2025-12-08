@@ -1,5 +1,6 @@
 'use client'
 import React, { Component, ErrorInfo, ReactNode } from 'react'
+import Link from 'next/link'
 import { FaExclamationTriangle, FaRedo } from 'react-icons/fa'
 
 interface Props {
@@ -94,12 +95,12 @@ export default class ErrorBoundaryWrapper extends Component<Props, State> {
                 Try Again
               </button>
               
-              <a
+              <Link
                 href="/"
-                className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all text-center"
               >
                 Go Home
-              </a>
+              </Link>
             </div>
 
             <a

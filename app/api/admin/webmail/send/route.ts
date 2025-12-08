@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
         data.subject,
         data.body
       ])
-    } catch (dbError) {
+    } catch {
       console.log('Database not available, email sent but not saved')
     }
 

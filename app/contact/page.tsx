@@ -1,24 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { 
-  FaEnvelope, FaPhone, FaMapMarkerAlt, FaClock, FaLinkedin, 
-  FaTwitter, FaGithub, FaPaperPlane, FaCheckCircle, FaComments
-} from 'react-icons/fa'
+import { FaPhone, FaClock } from 'react-icons/fa'
 import ContactForm from '../../components/ContactForm'
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    service: '',
-    budget: '',
-    message: '',
-    timeline: ''
-  })
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const contactMethods = [
     {

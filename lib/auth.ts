@@ -6,7 +6,7 @@ export function verifyToken(token: string): boolean {
   try {
     jwt.verify(token, JWT_SECRET)
     return true
-  } catch (error) {
+  } catch {
     return false
   }
 }
@@ -18,7 +18,7 @@ export function generateToken(payload: Record<string, unknown>): string {
 export function decodeToken(token: string): Record<string, unknown> | null {
   try {
     return jwt.verify(token, JWT_SECRET) as Record<string, unknown>
-  } catch (error) {
+  } catch {
     return null
   }
 }

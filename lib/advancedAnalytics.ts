@@ -85,7 +85,7 @@ class AdvancedAnalytics {
     
     // Send to Google Analytics if available
     interface WindowWithGtag extends Window {
-      gtag?: (...args: unknown[]) => void
+      gtag: (...args: unknown[]) => void
     }
     const win = window as WindowWithGtag
     if (typeof window !== 'undefined' && win.gtag) {

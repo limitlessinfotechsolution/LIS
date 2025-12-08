@@ -18,7 +18,7 @@ export async function PATCH(
       )
     }
 
-    const { status } = await request.json()
+    const { status: _status } = await request.json()
     const { id } = await context.params
 
     // In production, update in database
@@ -27,7 +27,7 @@ export async function PATCH(
       success: true,
       message: 'Inquiry updated successfully'
     })
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to update inquiry' },
       { status: 500 }
@@ -57,7 +57,7 @@ export async function DELETE(
       success: true,
       message: 'Inquiry deleted successfully'
     })
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to delete inquiry' },
       { status: 500 }
